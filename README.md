@@ -1,2 +1,0 @@
-# FullStackDev
-Projetos da Faculdade.
