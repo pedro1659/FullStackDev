@@ -1,35 +1,45 @@
+"""
+Calculadora de Equações Quadráticas
+
+Este script calcula as raízes de uma equação quadrática com base nos coeficientes inseridos pelo usuário.
+"""
+
+from ast import literal_eval
 import numpy as np
 
 
-def entrada_dados():
-    coeficiente = quantidade = eval(input("Digite o valor do coeficiente: "))
+def obter_coeficiente():
+    """Obtém o valor do coeficiente inserido pelo usuário."""
+    coeficiente = literal_eval(input("Digite o valor do coeficiente: "))
     return coeficiente
 
 
-def calc_delta(a, b, c):
-    return new_func(a, b, c)
+def calcular_delta(coef_a, coef_b, coef_c):
+    """Calcula o Delta para a equação quadrática."""
+    return nova_funcao(coef_a, coef_b, coef_c)
 
 
-def new_func(a, b, c):
-    return b * b - 4 * a * c
+def nova_funcao(coef_a, coef_b, coef_c):
+    """Calcula o discriminante da equação quadrática."""
+    return coef_b * coef_b - 4 * coef_a * coef_c
 
 
-def calcular_raizes(a, b, c, delta):
-    if delta < 0:
-        return "a equação não possui raízes nos números rais"
-    elif delta == 0:
-        x = -b / 2 * a
-        return f"a equação possui apenas uma raiz: {x}"
-    else:
-        x1 = (-b - np.sqrt(delta)) / (2 * a)
-        x2 = (-b + np.sqrt(delta)) / (2 * a)
-        return f"a equação possui as raízes: {x1}, {x2}"
+def calcular_raizes(coef_a, coef_b, discriminante):
+    """Calcula as raízes da equação quadrática."""
+    if discriminante < 0:
+        return "A equação não possui raízes nos números reais."
+    if discriminante == 0:
+        raiz = -coef_b / (2 * coef_a)
+        return f"A equação possui apenas uma raiz: {raiz}"
+    raiz1 = (-coef_b - np.sqrt(discriminante)) / (2 * coef_a)
+    raiz2 = (-coef_b + np.sqrt(discriminante)) / (2 * coef_a)
+    return f"A equação possui as raízes: {raiz1}, {raiz2}"
 
 
-# f(x)=ax^2+bx+c
-a = entrada_dados()
-b = entrada_dados()
-c = entrada_dados()
+# f(x) = ax^2 + bx + c
+a = obter_coeficiente()
+b = obter_coeficiente()
+c = obter_coeficiente()
 
-delta=calc_delta(a,b,c)
-print(calcular_raizes(a, b, c, delta))
+delta = calcular_delta(a, b, c)
+print(calcular_raizes(a, b, delta))
