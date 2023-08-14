@@ -1,7 +1,7 @@
 """
 Calculadora de Equações Quadráticas
 
-Este script calcula as raízes de uma equação quadrática com base nos coeficientes inseridos pelo usuário.
+Calcula as raízes de uma equação quadrática com base nos coeficientes inseridos pelo usuário.
 """
 
 from ast import literal_eval
