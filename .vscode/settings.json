@@ -2,5 +2,6 @@
     "python.analysis.extraPaths": [
         "./sources"
     ],
-    "python.analysis.typeCheckingMode": "basic"
+    "python.analysis.typeCheckingMode": "off",
+    "editor.defaultFormatter": "ms-python.black-formatter"
 }

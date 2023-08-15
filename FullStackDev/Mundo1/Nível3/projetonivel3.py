@@ -1,34 +1,34 @@
-"""Entrada dos dados"""
-conjunto_original = [1, 2, 3]
+"""Gerar um conjunto e suas partes que aceite números decimais inteiros, letras e símbolos"""
 
-def calcular_combinacoes(conjunto):
-    """Cálculos intermediários usando tabela-verdade para obter combinações"""
-    num_elementos = len(conjunto)
-    combinacoes = []
-
-    for i in range(1, 2 ** num_elementos):
-        subconjunto = []
-        for j in range(num_elementos):
-            if (i >> j) & 1:
-                subconjunto.append(conjunto[j])
-        combinacoes.append(subconjunto)
-
-    return combinacoes
-
-combinacoes_intermediarias = calcular_combinacoes(conjunto_original)
 
 def gerar_partes(conjunto):
     """Função para gerar as partes do conjunto"""
     partes = [[]]
-    for elemento in conjunto:
+    for elementos in conjunto:
         novas_partes = []
         for parte in partes:
-            novas_partes.append(parte + [elemento])
+            novas_partes.append(parte + [elementos])
         partes.extend(novas_partes)
 
     return partes
 
-conjunto_de_partes = gerar_partes(conjunto_original)
 
-# Apresentação dos resultados
-print("A lista produzida é igual a:", conjunto_de_partes)
+# Entrada de dados
+entrada = input("Entre com uma lista para ser gerado o conjunto de suas partes: ")
+conjunto_original = entrada.strip("[]").split()
+
+# Geração e apresentação da saída
+conjunto_de_partes = gerar_partes(conjunto_original)
+conjunto_de_partes_sem_virgulas = [
+    [elemento.replace(",", "") for elemento in parte] for parte in conjunto_de_partes
+]
+conjunto_de_partes_sem_virgulas_sem_aspas = [
+    [
+        int(elemento.strip("'"))
+        if elemento.strip("'").isdigit()
+        else elemento.strip("'")
+        for elemento in parte
+    ]
+    for parte in conjunto_de_partes_sem_virgulas
+]
+print("Conjunto de partes:", conjunto_de_partes_sem_virgulas_sem_aspas)

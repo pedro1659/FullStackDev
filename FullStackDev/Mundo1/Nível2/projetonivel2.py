@@ -1,28 +1,24 @@
-def decimal_to_binary(decimal_num):
-    """
-    Converte um número decimal para sua representação em binário.
+"""Transformar entradas numericas para sua representação em binario."""
 
-    Args:
-        decimal_num (int): O número na base decimal a ser convertido.
 
-    Returns:
-        str: A representação do número na base binária.
-    """
-    if decimal_num == 0:
+def decimal_para_binario(num_decimal):
+    """Converte um número decimal para sua representação em binário."""
+    if num_decimal == 0:
         return "0"  # Se o número for zero, a representação binária também é zero
 
-    binary = ""  # Inicializa uma string vazia para armazenar a representação binária
+    num_binario = (
+        ""  # Inicializa uma string vazia para armazenar a representação binária
+    )
 
-    while decimal_num > 0:
-        remainder = decimal_num % 2  # Calcula o resto da divisão por 2
-        binary = (
-            str(remainder) + binary
-        )  # Adiciona o dígito binário no início da string
-        decimal_num //= 2  # Atualiza o número decimal dividindo por 2
-    return binary
+    while num_decimal > 0:
+        resto = num_decimal % 2  # Calcula o resto da divisão por 2
+        num_binario = (
+            str(resto) + num_binario  # Adiciona o dígito binário no início da string
+        )
+        num_decimal //= 2  # Atualiza o número decimal dividindo por 2
+    return num_binario
 
 
-# Exemplo de uso
-decimal_number = int(input("Digite um número decimal: "))
-binary_representation = decimal_to_binary(decimal_number)
-print(f"O número {decimal_number} em binário é: {binary_representation}")
+n_decimal = int(input("Digite um número decimal: "))
+REPRES_BINARIA = decimal_para_binario(n_decimal)
+print(f"O número {n_decimal} em binário é: {REPRES_BINARIA}")
